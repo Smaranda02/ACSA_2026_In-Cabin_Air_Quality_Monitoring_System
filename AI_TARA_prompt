@@ -1,0 +1,20 @@
+Act as a Senior Automotive and IoT Cybersecurity Engineer conforming to the ISO/SAE 21434 standard. Perform a preliminary Threat Analysis and Risk Assessment (TARA), specifically Threat Identification and Damage Scenario formulation, for the system architecture modeled in Ansys Medini Analyze described below.
+
+System Architecture Overview
+The system is a multi-tier environmental/indoor monitoring platform featuring dual-path edge-to-cloud telemetry.
+
+1. Central Processing Unit: Controller Indoor Unit (IUC).
+2. Sensing Subsystem (connected to IUC): Particulate matter: PM_2.5, PM10; Toxic/ambient gases: CO, CO2, NO2, SO2, O3; Geolocation: Component GPS (bidirectional interface with IUC).
+3. Actuation Subsystem: Actuator Status Display (controlled directly by IUC via Display In/Out lines).
+4. Uplink Path A (Local Edge / Cellular): IUC <-->  Component Wi-Fi <-->  Controller Far edge device <-->  Component 4G <-->  Item/System Cloud server.
+5. Uplink Path B (LPWAN): IUC <-->  Component LoRaWAN <-->  Component LoRa GW <-->  Item/System LoRa edge server <-->  Item/System Cloud server.
+6. Backend and Consumer Tier: Item/System Cloud server <-->  Item/System User (dashboard / client application).
+
+
+Task Scope and Objectives
+
+1.	Apply the STRIDE threat modeling methodology systematically across: Physical/analog sensor interfaces and buses to the IUC; Local wireless channels (Wi-Fi, LoRaWAN, Cellular 4G, GPS RF signals); Intermediate computing nodes (Far edge device, LoRa Gateway, LoRa edge server); Cloud backend endpoints and end-user data delivery channels.
+2.	Formulate clear Threat Scenarios and map each to a concrete Damage Scenario considering vehicle/system-level safety, operation, financial impact, and user privacy (SFOP).
+Output Format
+Provide the results in a structured Markdown table compatible with Ansys Medini Analyze TARA tables, using the following columns: Threat ID, Target Element / Interface, STRIDE Category, Compromised Asset and Property (Confidentiality, Integrity, Availability, Authenticity), Threat Scenario Description, Damage Scenario (Vehicle / Passenger / Operational Impact).
+Ensure deep technical coverage of: Sensor data spoofing/tampering (especially safety-critical gases like CO and toxic pollutants) causing suppressed alerts or false status indications on the Status Display; Wireless jamming, replay, and eavesdropping attacks on LoRaWAN, 4G, Wi-Fi, and GPS; Compromise or lateral movement via intermediate processing nodes (Far edge device, LoRa Edge server); Man-in-the-Middle (MitM) and credential/session hijacking between Cloud server and User.
